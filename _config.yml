@@ -3,5 +3,6 @@ title: THG Horizon Docs
 domain: thehutgroup.github.io
 url: https://thehutgroup.github.io
 baseurl: /Horizon-Public-Docs/
+repository: thehutgroup/Horizon-Public-Docs
 
 theme: minima
