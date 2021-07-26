@@ -38,7 +38,7 @@ query {
 
 ## Field names
 
-* Timestamps should be named along the lines of`createdAt`, `updatedAt` etc.
+* Timestamps should be named along the lines of `createdAt`, `updatedAt` etc.
 
 ## Pagination and filters
 
@@ -115,4 +115,4 @@ type CreditAccount {
 }
 ```
 
-This does leak some of our internal architecture but as covered in the Expedia blog post from the top of this page. This is realistically unavoidable. 
+This does leak some of our internal architecture but, as covered in the Expedia blog post from the top of this page, this is realistically unavoidable.

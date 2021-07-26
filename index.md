@@ -45,13 +45,13 @@ The headers currently supported are:
 
 Features are a way of enabling or disabling entire parts of the backend for different sites, so that each site can have a GraphQL API that fulfils the requirements of that site, without extra unused fields and types.
 
-The list of currently active features on a given site can be queried using the `features` field on the `Query` type.  The full list of possible features can be found [here](/docs/schema/feature.doc.html).
+The list of currently active features on a given site can be queried using the `features` field on the `Query` type.  The full list of possible features can be found in the schema documentation.
 
 The features affect the avaiable schema through GraphQL directives, which are applied to different types, fields and arguments in the master schema found in this document.
 
 ## Graceful degradation (flags)
 
-The extensions of each GraphQL response may come with a list of `flags`.  This will be a list of values as defined in the Flag enum, which can be found [here](/docs/schema/flag.doc.html).
+The extensions of each GraphQL response may come with a list of `flags`.  This will be a list of values as defined in the Flag enum, which can be found in the schema documentation.
 
 These flags are used by Horizon to signal information about the server's current status, and the status of the user's session.  Currently, the following flags are supported:
 
@@ -85,7 +85,7 @@ Each flag will appear in the response at most once.
 * Some mutations / queries are declared to be rate limited in the schema.
   * These are associated with a rate limiting bucket, which is a set of operations that grouped together for rate-limiting purposes, e.g. `AUTHENTICATION`.
   * For some (not all) rate limited operations, the rate limiter may be bypassed if a valid CAPTCHA response is submitted with the request.
-  * In this case, CAPTCHA is used as an umbrella term to also cover various "security check" mechanisms. See [the CaptchaType enum](/docs/schema/captchatype.doc.html) for the canonical list of supported systems.
+  * In this case, CAPTCHA is used as an umbrella term to also cover various "security check" mechanisms. See the CaptchaType enum for the canonical list of supported systems.
 
 ### Am I being rate limited?
 
