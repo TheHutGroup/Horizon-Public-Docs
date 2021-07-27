@@ -6,7 +6,7 @@ nav_order: 1
 ---
 
 # Account Creation
-On THGs E-commerce platform, the account creation form is completely dynamic. This means the form fields can be added and configured in our tooling and they automatically propagate through to the website.
+On THG's e-commerce platform, the account creation form is completely dynamic. This means the form fields can be added and configured in our tooling and they automatically propagate through to the website.
 
 Because of this, we have a mechanism in the schema to query the current account creation form and its field types. This form query is also used in other areas where dynamic forms are used like the Profiles in the account section.
 
