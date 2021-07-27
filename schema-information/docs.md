@@ -1,6 +1,11 @@
 ---
+layout: default
 title: GraphQL Documentation
+parent: Schema Information
+nav_order: 3
 ---
+
+# GraphQL Documentation
 
 Schema documentation is available for each supported site.
 
@@ -8,8 +13,6 @@ For API endpoints, just replace "graphql" in the URL with "docs". Examples as fo
 
 * [Lookfantastic UK](https://api.thehut.net/lfint/en/docs)
 * [Myprotein US](https://api.thehut.net/myprotein/us/docs)
-
-These are also available in a similar way for the internal GSLB endpoints.
 
 For web endpoints, add "schema-docs" to the Horizon domain, e.g:
 

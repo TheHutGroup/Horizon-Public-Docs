@@ -1,9 +1,8 @@
 ---
+layout: default
 title: Schema Information
+nav_order: 2
+has_children: true
 ---
 
-In this section:
-
-* [Breaking Changes](changelog.md)
-* [Design Principles](design-principles.md)
-* [Examples](examples.md)
+# Schema Information
