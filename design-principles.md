@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Schema Design Principles
-parent: Schema Information
 nav_order: 2
 ---
 

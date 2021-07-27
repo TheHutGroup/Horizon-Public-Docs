@@ -8,10 +8,7 @@ repository: thehutgroup/Horizon-Public-Docs
 remote_theme: pmarsceill/just-the-docs
 
 logo: "/assets/images/logo.svg"
-
-aux_links:
-  "Live Docs":
-    - "/Horizon-Public-Docs/schema-information/docs.html"
+footer_content: 2021 © The Hut.com Ltd.
 
 # Enable or disable the site search
 # Supports true (default) or false

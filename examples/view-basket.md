@@ -1,8 +1,7 @@
 ---
 layout: default
 title: View Basket
-parent: GraphQL Examples
-grand_parent: Schema Information
+parent: Examples & Concepts
 nav_order: 10
 ---
 

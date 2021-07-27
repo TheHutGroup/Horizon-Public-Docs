@@ -179,9 +179,9 @@ This system operates entirely independently of rate limiting.
 
 ## Pagination and query filters
 
-See the [Schema Design Principles](schema-information/design-principles.md) for an explanation of these fields.
+See the [Schema Design Principles](design-principles.md) for an explanation of these fields.
 
 ## Examples
 
 * [Example queries and mutations for common e-commerce pages and flows](schema-information/index.md)
-* [Examples of navigation types and how they are rendered](schema-information/examples/navigation-types.md)
+* [Examples of navigation types and how they are rendered](examples/navigation-types.md)
