@@ -1,6 +1,11 @@
 ---
+layout: default
 title: Schema Design Principles
+parent: Schema Information
+nav_order: 2
 ---
+
+# Schema Design Principles
 
 **Remember that any information included in the schema (even in descriptions) should be considered public. These docs are also public.**
 

@@ -10,6 +10,7 @@ source "https://rubygems.org"
 # Happy Jekylling!
 
 gem "minima", "~> 2.5"
+gem "just-the-docs", "~> 0.3.3"
 gem "github-pages", "~> 215", group: :jekyll_plugins
 
 # Windows and JRuby does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -21,3 +22,5 @@ end
 
 # Performance-booster for watching directories on Windows
 gem "wdm", "~> 0.1.1", :platforms => [:mingw, :x64_mingw, :mswin]
+
+gem "webrick", "~> 1.7"

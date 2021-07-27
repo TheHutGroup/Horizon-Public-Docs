@@ -1,7 +1,10 @@
 ---
 layout: page
 title: User's Guide
+nav_order: 1
 ---
+
+# User Guide
 
 Horizon is the GraphQL API powering THG's enterprise e-commerce platform.
 
@@ -180,5 +183,5 @@ See the [Schema Design Principles](schema-information/design-principles.md) for 
 
 ## Examples
 
-* [Example queries and mutations for common e-commerce pages and flows](schema-information/examples.md)
+* [Example queries and mutations for common e-commerce pages and flows](schema-information/index.md)
 * [Examples of navigation types and how they are rendered](schema-information/navigation-types.md)
