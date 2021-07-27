@@ -3,7 +3,7 @@ layout: default
 title: Checkout Handover
 parent: GraphQL Examples
 grand_parent: Schema Information
-nav_order: 10
+nav_order: 11
 ---
 
 # Checkout Handover

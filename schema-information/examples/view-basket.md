@@ -3,7 +3,7 @@ layout: default
 title: View Basket
 parent: GraphQL Examples
 grand_parent: Schema Information
-nav_order: 9
+nav_order: 10
 ---
 
 # View Basket

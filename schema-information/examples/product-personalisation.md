@@ -3,7 +3,7 @@ layout: default
 title: Product Personalisation
 parent: GraphQL Examples
 grand_parent: Schema Information
-nav_order: 11
+nav_order: 12
 ---
 
 # Product Personalisation

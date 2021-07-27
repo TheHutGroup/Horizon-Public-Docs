@@ -8,7 +8,7 @@ nav_order: 7
 
 # Navigation
 
-See also [examples of navigation types](../navigation-types.md).
+See also [examples of navigation types](navigation-types.md).
 
 Navigation refers to the header and footer shown on site. These can technically also include widgets. Widgets in navigation basically just mean a widget that appears at the top or bottom of every page below the header or above the footer.
 

@@ -3,7 +3,7 @@ layout: default
 title: Customer Services
 parent: GraphQL Examples
 grand_parent: Schema Information
-nav_order: 12
+nav_order: 13
 ---
 
 # Customer Services
