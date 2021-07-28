@@ -5,7 +5,7 @@ url: https://thehutgroup.github.io
 baseurl: /Horizon-Public-Docs
 repository: thehutgroup/Horizon-Public-Docs
 
-remote_theme: pmarsceill/just-the-docs
+remote_theme: thehutgroup/just-the-docs
 
 logo: "/assets/images/logo.svg"
 footer_content: 2021 © The Hut.com Ltd.
