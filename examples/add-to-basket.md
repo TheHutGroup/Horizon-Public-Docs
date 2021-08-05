@@ -7,7 +7,9 @@ nav_order: 9
 
 # Add to Basket
 
-When adding to basket for the first time, the basket ID should be set as null which will generate a basket for you. This should then be provided back each time. Note: The basket id will update with each manipulation to the basket as it contains a last updated timestamp. The basket ID can also change during a login where a basket merge can occur.
+When adding to basket for the first time, the basket ID should be set as null which will generate a basket for you. This should then be provided back each time.
+
+Note: The basket ID will update with each manipulation to the basket as it contains a last-updated timestamp. The basket ID may also change on the first request after a login, as a basket merge can occur.
 
 Altering the quantity of the basket is a separate mutation that allows you to set the quantity of an item if you know its already there.
 
