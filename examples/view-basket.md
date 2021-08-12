@@ -26,6 +26,8 @@ The basket is comprised of:
 - messages
     - These are the messages to display on the basket. These have a type and a message to display. The types and recommendations can be found [here](https://api.thehut.net/lfint/en/docs#BasketMessageType)
     - Note: Some of these messages will appear once and disappear. For example, the `PRODUCT_OUT_OF_STOCK` message will show and detail the item that is out of stock, then the product and message will automatically be removed next time the basket is requested.
+- merged - We persist basket information for logged in customers so that when they return, their basket is still there, regardless of device. This does mean that someone can come to the site and add items to their basket, then when attempting to checkout and they login, their saved basket is also available. In this case and a few other edge cases, this causes a basket merge. 
+
 
 ```graphql
 query ViewBasket {
@@ -35,6 +37,7 @@ query ViewBasket {
       currency:GBP
       shippingDestination: GB
   	}
+    acknowledgeMerge: true
   ) {
     id
     items {
@@ -78,6 +81,15 @@ query ViewBasket {
       type
       message
     }
+    merged
   }
 }
 ```
+
+## Basket Merge
+
+As stated above, we persist basket information for logged in customers so that when they return, their basket is still there, regardless of device. 
+This does mean that someone can come to the site, add items to their basket, then when attempting to checkout and they login, their saved basket is also available. In this case and a few other edge cases, this causes a basket merge. 
+
+When baskets merge, we prevent checkout from being available so that users do not go from the Basket Page to Checkout and suddenly extra items appear in their basket. To resolve this, on the basket query, an `acknowledgeMerge` flag can be passed that will clear this and allow the customer to continue. 
+It is recommended that if the `CheckoutStartError` is `BASKETS_MERGED`, the customer is returned to the basket page with a call to the API acknowledging the merge and a message shown to the customer describing why they have been returned. 
