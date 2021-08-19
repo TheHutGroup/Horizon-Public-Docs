@@ -9,7 +9,7 @@ nav_order: 11
 
 Once the user is finished on the basket, the basket can be handed over the checkout to complete. To do this, the customer must be logged in otherwise you will be presented with an error.
 
-The response of the checkout handover is the checkout token and the URL. To get to checkout, the url format is ${checkoutUrl}?ct=${token}.
+The response of the checkout handover is the checkout token and the URL. To get to checkout, redirect to the checkout URL which will have a copy of the token in it as the ct query parameter. 
 
 ```graphql
 mutation Checkout {
