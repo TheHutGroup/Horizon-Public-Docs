@@ -9,7 +9,7 @@ nav_order: 11
 
 Once the user is finished on the basket, the basket can be handed over the checkout to complete. To do this, the customer must be logged in otherwise you will be presented with an error.
 
-The response of the checkout handover is the checkout token and the URL. To get to checkout, redirect to the checkout URL which will have a copy of the token in it as the ct query parameter. 
+The response of the checkout handover is the checkout token and the URL. To get to checkout, redirect to the checkout URL, which will have a copy of the token in it as the `ct` query parameter. 
 
 ```graphql
 mutation Checkout {
@@ -70,3 +70,7 @@ mutation GuestCheckoutWithoutEmail {
   }
 }
 ```
+
+## Handover errors
+
+The [CheckoutStartError](https://api.thehut.net/lfint/en/docs#CheckoutStartError) enum details situations that will prevent the checkout handover succeeding. Most of these (those starting with "invalid" or "no such") are a response to incorrect user input, or edge cases with the basket contents. The one most commonly seen is `BASKETS_MERGED` which can occur if checking-out immedidately after a login. See [here](view-basket.md#basket-merge) for instructions for clearing that flag.
