@@ -9,7 +9,7 @@ nav_order: 10
 
 The basket object is returned whenever any mutations are made to the basket but can also be queried directly for things like a basket page where we just want to display the contents of the basket.
 
-The basket is comprised of:
+The basket comprises:
 - id - This is the id of the basket and changes with each change to the basket
 - items 
     - The product information
@@ -24,7 +24,7 @@ The basket is comprised of:
 - appliedOffers
     - Same as the per product information but lists all offers affecting the basket. On a product level it only shows the offers that affect that product.
 - messages
-    - These are the messages to display on the basket. These have a type and a message to display. The types and recommendations can be found [here](https://api.thehut.net/lfint/en/docs#BasketMessageType)
+    - These are the messages to display on the basket. All will have a type, some will also have a server-defined message (e.g. a custom consolation message for an expired discount code) while others have only a type. For those types the client should show a generic message of its own. All types, and recommendations for handling them are listed in the [BasketMessageType docs](https://api.thehut.net/lfint/en/docs#BasketMessageType).
     - Note: Some of these messages will appear once and disappear. For example, the `PRODUCT_OUT_OF_STOCK` message will show and detail the item that is out of stock, then the product and message will automatically be removed next time the basket is requested.
 - merged - We persist basket information for logged in customers so that when they return, their basket is still there, regardless of device. This does mean that someone can come to the site and add items to their basket, then when attempting to checkout and they login, their saved basket is also available. In this case and a few other edge cases, this causes a basket merge. 
 
