@@ -2,7 +2,7 @@
 layout: default
 title: Checkout Handover
 parent: Examples & Concepts
-nav_order: 11
+nav_order: 12
 ---
 
 # Checkout Handover
