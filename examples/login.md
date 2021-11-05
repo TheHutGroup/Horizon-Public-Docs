@@ -6,7 +6,7 @@ nav_order: 2
 ---
 
 # Login
-Login is much simpler than registration in the fact that only the username and password is required. Currently our platform only supports email addresses as usernames but their are plans to remove this restriction long term.
+Login is much simpler than registration in the fact that only the username and password is required. Currently our platform only supports email addresses as usernames but there are plans to remove this restriction in the long-term.
 
 ```graphql
 mutation Login {
