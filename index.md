@@ -31,6 +31,8 @@ The cookies currently supported are:
 * `chumewe_user` Cookie placed on the device which lasts 5 years for tracking and personalisation
 * `chumewe_sess` Cookie placed on the device which lasts 4 hours for session tracking and A/B testing
 
+Note: The Opaque token described above, which is used for customer authentication, will not be returned as a field on the `AuthenticationResponse` object for the web API. This is to help support client-side rendered application being unable to securely store this as a cookie, preventing other JS from potentially stealing it. We will return this as a secure cookie on successful actions as well as reading this cookie when required for authenticated actions.
+
 ### App API
 
 The App API determines the site based on the path rather than the domain like above. The format is `https://api.thehut.net/[site code]/[subsite code]/graphql` e.g. `https://api.thehut.net/myprotein/en/graphql`. Only POST requests are supported.
