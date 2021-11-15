@@ -78,14 +78,14 @@ mutation SocialLogin {
 }
 
 query SocialLogin {
-  exchangeSocialLoginToken(input: {
+  exchangeSocialAuthenticationToken(input: {
     socialAuthenticationToken:"oqehb6cryq44j1-64cscpxvwye00jwfipde"
   }) {
     authenticationResponse {
-        error
+      error
     }
   }
-}    
+}
 ```
 
 ## Edge Cases
