@@ -1,7 +1,8 @@
 ---
 layout: default
 title: Account Creation
-parent: Examples & Concepts
+parent: Customer & Authentication
+grand_parent: Examples & Concepts
 nav_order: 1
 ---
 

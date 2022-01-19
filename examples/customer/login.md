@@ -1,7 +1,8 @@
 ---
 layout: default
 title: Login
-parent: Examples & Concepts
+parent: Customer & Authentication
+grand_parent: Examples & Concepts
 nav_order: 2
 ---
 

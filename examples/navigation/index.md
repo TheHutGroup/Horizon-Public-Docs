@@ -2,7 +2,8 @@
 layout: default
 title: Navigation
 parent: Examples & Concepts
-nav_order: 7
+has_children: true
+nav_order: 5
 ---
 
 # Navigation

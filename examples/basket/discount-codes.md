@@ -1,8 +1,9 @@
 ---
 layout: default
 title: Discount Codes
-parent: Examples & Concepts
-nav_order: 10
+parent: Basket
+grand_parent: Examples & Concepts
+nav_order: 2
 ---
 
 # Discount Codes

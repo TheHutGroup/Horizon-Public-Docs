@@ -186,4 +186,4 @@ See the [Schema Design Principles](design-principles.md) for an explanation of t
 ## Examples
 
 * [Example queries and mutations for common e-commerce pages and flows](examples/index.md)
-* [Examples of navigation types and how they are rendered](examples/navigation-types.md)
+* [Examples of navigation types and how they are rendered](examples/navigation/navigation-types.md)

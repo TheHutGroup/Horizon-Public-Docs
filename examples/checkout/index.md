@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Checkout Handover
+title: Checkout
 parent: Examples & Concepts
-nav_order: 12
+nav_order: 7
 ---
 
-# Checkout Handover
+# Checkout
 
 Once the user is finished on the basket, the basket can be handed over the checkout to complete. To do this, the customer must be logged in otherwise you will be presented with an error.
 
@@ -73,4 +73,4 @@ mutation GuestCheckoutWithoutEmail {
 
 ## Handover errors
 
-The [CheckoutStartError](https://api.thehut.net/lfint/en/docs#CheckoutStartError) enum details situations that will prevent the checkout handover succeeding. Most of these (those starting with "invalid" or "no such") are a response to incorrect user input, or edge cases with the basket contents. The one most commonly seen is `BASKETS_MERGED` which can occur if checking-out immedidately after a login. See [here](view-basket.md#basket-merge) for instructions for clearing that flag.
+The [CheckoutStartError](https://api.thehut.net/lfint/en/docs#CheckoutStartError) enum details situations that will prevent the checkout handover succeeding. Most of these (those starting with "invalid" or "no such") are a response to incorrect user input, or edge cases with the basket contents. The one most commonly seen is `BASKETS_MERGED` which can occur if checking-out immedidately after a login. See [here](../basket/index.md#basket-merge) for instructions for clearing that flag.

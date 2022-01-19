@@ -1,8 +1,9 @@
 ---
 layout: default
 title: Account Section
-parent: Examples & Concepts
-nav_order: 15
+parent: Customer & Authentication
+grand_parent: Examples & Concepts
+nav_order: 3
 ---
 
 # Account Section
@@ -201,7 +202,7 @@ mutation CancelOfferGroups {
 ```
 
 ## Returning Orders
-Todo when we work out where this logic should live
+TODO: Documentation coming soon
 
 ## Marketing Preferences
 On our platform, you can opt in for marketing through SMS or Email channels. The current opt in status can be checked using the following query.
