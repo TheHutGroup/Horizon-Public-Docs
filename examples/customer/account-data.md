@@ -3,7 +3,7 @@ layout: default
 title: Account Section
 parent: Customer & Authentication
 grand_parent: Examples & Concepts
-nav_order: 3
+nav_order: 2
 ---
 
 # Account Section

@@ -2,7 +2,7 @@
 layout: default
 title: Checkout
 parent: Examples & Concepts
-nav_order: 7
+nav_order: 2
 ---
 
 # Checkout

@@ -3,7 +3,7 @@ layout: default
 title: Product Lists & Search
 parent: Examples & Concepts
 has_children: true
-nav_order: 3
+nav_order: 7
 ---
 
 # Product Lists & Search

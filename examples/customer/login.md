@@ -3,7 +3,7 @@ layout: default
 title: Login
 parent: Customer & Authentication
 grand_parent: Examples & Concepts
-nav_order: 2
+nav_order: 5
 ---
 
 # Login
