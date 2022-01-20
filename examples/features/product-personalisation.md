@@ -3,7 +3,7 @@ layout: default
 title: Product Personalisation
 parent: Features
 grand_parent: Examples & Concepts
-nav_order: 1
+nav_order: 2
 ---
 
 # Product Personalisation

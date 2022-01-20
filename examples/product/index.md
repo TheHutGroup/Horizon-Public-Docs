@@ -2,7 +2,7 @@
 layout: default
 title: Product
 parent: Examples & Concepts
-nav_order: 2
+nav_order: 6
 ---
 
 # Product
