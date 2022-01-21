@@ -42,4 +42,4 @@ Once a customer has access to the referral code, they should use this when creat
 
 Rewards are configured in the THG offer system and can differ based on the requirements of the site. In general, the referrer receives account credit for any successful order but referee over a specific value e.g. £5 credit if they spend more than £30 and the referee received a discount off their order e.g. 20%. 
 
-These exact reward is not exposed through this API and this is something that should be manually added to the site as marketing information based on how the site is configured. 
+This exact reward is not exposed through this API and this is something that should be manually added to the site as marketing information based on how the site is configured. 
