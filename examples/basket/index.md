@@ -1,11 +1,12 @@
 ---
 layout: default
-title: View Basket
+title: Basket
 parent: Examples & Concepts
-nav_order: 11
+has_children: true
+nav_order: 1
 ---
 
-# View Basket
+# Basket
 
 The basket object is returned whenever any mutations are made to the basket but can also be queried directly for things like a basket page where we just want to display the contents of the basket.
 

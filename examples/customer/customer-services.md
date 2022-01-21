@@ -1,8 +1,9 @@
 ---
 layout: default
 title: Customer Services
-parent: Examples & Concepts
-nav_order: 14
+parent: Customer & Authentication
+grand_parent: Examples & Concepts
+nav_order: 4
 ---
 
 # Customer Services

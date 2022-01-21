@@ -1,8 +1,9 @@
 ---
 layout: default
 title: Product Personalisation
-parent: Examples & Concepts
-nav_order: 13
+parent: Features
+grand_parent: Examples & Concepts
+nav_order: 2
 ---
 
 # Product Personalisation

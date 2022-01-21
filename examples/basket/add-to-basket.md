@@ -1,8 +1,9 @@
 ---
 layout: default
 title: Add To Basket
-parent: Examples & Concepts
-nav_order: 9
+parent: Basket
+grand_parent: Examples & Concepts
+nav_order: 1
 ---
 
 # Add to Basket
