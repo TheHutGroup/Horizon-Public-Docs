@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Product Page
+title: Product
 parent: Examples & Concepts
-nav_order: 3
+nav_order: 6
 ---
 
-# Product Page
+# Product
 On our platform, product pages are made up of product content, reviews and recommendations. These can all be accessed easily through the product query.
 
 ## Relationships

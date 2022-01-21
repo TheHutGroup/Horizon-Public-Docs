@@ -1,8 +1,9 @@
 ---
 layout: default
 title: Product List
-parent: Examples & Concepts
-nav_order: 6
+parent: Product Lists & Search
+grand_parent: Examples & Concepts
+nav_order: 1
 ---
 
 # Product List

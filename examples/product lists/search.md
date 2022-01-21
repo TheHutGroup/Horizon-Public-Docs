@@ -1,8 +1,9 @@
 ---
 layout: default
 title: Search
-parent: Examples & Concepts
-nav_order: 4
+parent: Product Lists & Search
+grand_parent: Examples & Concepts
+nav_order: 2
 ---
 
 # Search
