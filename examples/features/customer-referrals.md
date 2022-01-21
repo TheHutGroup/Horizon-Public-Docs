@@ -7,7 +7,7 @@ nav_order: 1
 ---
 
 # Customer Referrals
-Customer referrals are where one customer, can refer another customer and both of the customers get a rewards. For the rest of this document we will call these the referrer (person referring a friend) and referee (the friend being referred).
+Customer referrals are where one customer, can refer another customer and both of the customers get rewards. For the rest of this document we will call these the referrer (person referring a friend) and referee (the friend being referred).
 
 
 ## Referral Process
