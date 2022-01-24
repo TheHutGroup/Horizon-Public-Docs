@@ -7,4 +7,4 @@ nav_order: 3
 ---
 
 # Customer Referrals
-[examples of navigation types](../features/customer-referrals.md).
+[Customer Referrals documentation can be found here under Features](../features/customer-referrals.md).
