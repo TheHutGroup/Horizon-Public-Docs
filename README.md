@@ -13,3 +13,5 @@ bundle exec jekyll serve
 ```
 
 This will spin the docs up locally and will be accessible here: http://127.0.0.1:4000/Horizon-Public-Docs/
+
+For the current live version of the docs, these can be accessed here: https://thehutgroup.github.io/Horizon-Public-Docs/
