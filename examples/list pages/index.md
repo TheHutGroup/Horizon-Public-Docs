@@ -2,6 +2,7 @@
 layout: default
 title: Landing Pages
 parent: Examples & Concepts
+has_children: true
 nav_order: 4
 ---
 
