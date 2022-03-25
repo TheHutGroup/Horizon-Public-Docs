@@ -14,5 +14,5 @@ The field "lastName" has been renamed as "surname" to make it compatible with th
 
 ## Change in supersize variant (Released on 23/03/2022)
 
-The way to query the supersize variants of products has changed. The old way of querying that has been deprecated and will be removed from the schema in 6 months.
+The supersize variants query has changed. The previous query has been deprecated and will be removed from the schema in 6 months.
 . [See here](examples/features/supersize.md)

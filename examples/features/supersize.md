@@ -45,7 +45,7 @@ query SuperSizeVariantAndSaving {
 }
 ```
 
-Note: supersize variant was used to be queried as below but it's been deprecated now. Below way of querying will be removed from the schema in 6 months.
+Note: supersize variant was previously queried as below but has now been deprecated. The deprecated query will be removed from the schema in 6 months.
 
 ```graphql
 query SuperSizeVariant {
