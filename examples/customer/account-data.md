@@ -20,11 +20,14 @@ An order can be in 1 of 5 states:
 - DISPATCHED
 - PAYMENT_PROBLEM
 - CANCELLED
+- READY_TO_COLLECT
+- COLLECTED
 
 The `OUTSTANDING` filter will return the following as the order is not in a terminal state:
 - ORDER_PLACED
 - PROCESSING
 - PAYMENT_PROBLEM
+- READY_TO_COLLECT
 
 The `DISPATCHED` filter will return the following. This is a terminal state where the order was successful:
 - DISPATCHED
@@ -32,6 +35,7 @@ The `DISPATCHED` filter will return the following. This is a terminal state wher
 The `COMPLETED` filter will return the following. This is shows all orders in a terminal state:
 - DISPATCHED
 - CANCELLED
+- COLLECTED
 
 The above filters could be used to show "Active", "Successful" and "All" orders.
 
@@ -160,6 +164,29 @@ query OrderDetails{
   }
 }
 ```
+
+## Adding new Order Statuses
+
+Horizon serves as the entrypoint for external clients and aggregates data from a wide range of underlying systems within THG.
+
+In order to aggregate this data and serve it in a logical way to the external clients, Horizon is mapping these statuses into Horizon Order Statuses.
+
+The statuses supported by Horizon are declared in the GraphQL schema, within an enum: 
+
+``` enum OrderStatus {
+    ORDER_PLACED
+    PROCESSING
+    DISPATCHED
+    PAYMENT_PROBLEM
+    CANCELLED
+    READY_TO_COLLECT @if(feature: CLICK_AND_COLLECT)
+    COLLECTED @if(feature: CLICK_AND_COLLECT)
+} 
+```
+
+In order to add a new status in Horizon, it needs to be added within the ENUM declared within the schema and needs to be confirmed with the teams managing the underlying systems that maintain order statuses internally.
+
+``` ```
 
 ## Cancelling Orders
 After an order is placed, there is a window of around 30 minutes where it can be cancelled before it is dispatched. When cancelling an order, it is possible to either cancel the whole thing, or just some specific products.
