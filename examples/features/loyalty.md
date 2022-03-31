@@ -3,7 +3,7 @@ layout: default
 title: Loyalty
 parent: Features
 grand_parent: Examples & Concepts
-nav_order: 2
+nav_order: 3
 ---
 
 # Loyalty
@@ -42,14 +42,11 @@ Points are mostly earnt through the purchases of products. This information is e
 
 ```graphql
 query Product {
-  product(sku:11370303, strict: false) {
+  product(sku: 11370303, strict: false) {
     variants {
-      price(currency: USD, shippingDestination: US) {
-        price {
-          scalarValue
-        }
-        earnableLoyaltyPoints(sku: 11370303)
-      }
+      earnableLoyaltyPoints(
+        settings: { currency: USD, shippingDestination: US }
+      )
     }
   }
 }
@@ -96,3 +93,5 @@ query LoyaltyScheme {
 ```
 
 ## Redeemable Points
+
+[//]: # (TODO: Insert redeemable points here)

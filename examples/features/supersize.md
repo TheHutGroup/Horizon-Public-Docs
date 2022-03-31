@@ -3,7 +3,7 @@ layout: default
 title: Supersize
 parent: Features
 grand_parent: Examples & Concepts
-nav_order: 5
+nav_order: 6
 ---
 
 # Super Size
