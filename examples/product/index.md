@@ -273,6 +273,13 @@ query ProductPage {
         }
       }
     }
+    brand {
+      name
+      page {
+        path
+      }
+      imageUrl
+    }
   }
 }
 ```
