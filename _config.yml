@@ -8,7 +8,7 @@ repository: thehutgroup/Horizon-Public-Docs
 remote_theme: thehutgroup/just-the-docs
 
 logo: "/assets/images/logo.svg"
-footer_content: 2021 © The Hut.com Ltd.
+footer_content: 2022 © The Hut.com Ltd.
 
 # Enable or disable the site search
 # Supports true (default) or false

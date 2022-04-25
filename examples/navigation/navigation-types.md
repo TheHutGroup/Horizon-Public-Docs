@@ -7,10 +7,10 @@ nav_order: 1
 
 # Navigation Types
 
-Each item in the navigation tree structure returned by the header query has a navigation type. 
-This defines how it and its child items should be rendered.  Examples of how each one is rendered
+Each item in the navigation tree structure returned by the header query has a navigation type.
+This defines how it and its child items should be rendered. Examples of how each one is rendered
 can be found below:
- 
+
 ## TEXT
 
 Web, top level:
@@ -38,6 +38,7 @@ Mobile:
 ![Example of IMAGE_CARD navigation](../../navigation/ImageCard.png)
 
 ## THUMBNAIL_CARD
+
 ![Example of THUMBNAIL_CARD navigation](../../navigation/ThumbnailCard.png)
 
 ## BRANDS
@@ -48,3 +49,6 @@ Mobile:
 
 ![Example of DETACHED navigation](../../navigation/Detached.png)
 
+## WATERFALL
+
+![Example of WATERFALL navigation](../../navigation/Waterfall.png)

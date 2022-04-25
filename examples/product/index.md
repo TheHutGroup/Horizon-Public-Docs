@@ -6,9 +6,11 @@ nav_order: 6
 ---
 
 # Product
+
 On our platform, product pages are made up of product content, reviews and recommendations. These can all be accessed easily through the product query.
 
 ## Relationships
+
 When it comes to products, we have the concept of a Product, and a Product Variant. On other platforms, these are sometimes referred to as Master/Child or Parent/Child.
 
 A Product Variant is something that can actually be purchased and many products only have a single variant. For products that have multiple variants, there are variant options that are grouped by the variant key e.g. flavour or size.
@@ -18,10 +20,13 @@ What is shown on a product page (and therefore has a distinct URL) and in search
 Content can be set on either the product or product variant, depending on whether this content should be shared across all variants or update when changing variants on site.
 
 ## Content
+
 Product content is any content that can be added to a product that isn't mandatory data like a price, a title, a url and a name. Product content can be in one of these predefined types found [here](https://api.thehut.net/lfint/en/docs#ProductContentValue).
 
 As previously stated, this can be set on the Product or the Product Variant so is best to query this for both objects to choose which to show.
+
 ## URLs and Strict flag
+
 When using the product query, a strict flag can be supplied. This flag determines whether the server should handle any redirects based on the product. These could be because you have entered a variant SKU, so we will actually return the master for you. Or if there is a redirect in place for discontinued products for example.
 
 If this is set to true, we will return null if a variant SKU is supplied.
@@ -29,12 +34,15 @@ If this is set to true, we will return null if a variant SKU is supplied.
 URLs are currently defined in our product stack and are used to service the website as well as performance marketing integrations like Google Shopping, hence why they are provided in the data.
 
 ## Images
+
 Currently, images are returned in 3 possible sizes. In future, this will be changed to return a single image URL where the exact size is customisable based on URL parameters.
 
 ## PAPs - Promotion Aware Products
+
 As well as a promotion being aware of the products it applies to, on our platform, the inverse is also true. This means that for a product, if a promotion (or many) apply to it, the product is aware of this and promotion related information can be surfaced alongside the product.
 
 This includes information like:
+
 - Offer Title
 - Offer Message
 - Offer Link - A link to other products in this promotion
@@ -49,7 +57,16 @@ This is seen in the `marketedSpecialOffer` object below.
 ## Subscriptions
 The legacy flags `isSubscription` and `isAutoRenewSubscription` can be used to determine whether a product is a subscription product and if it is recurring or fixed term subscription. This functionality is being replaced by Subs by Sku.
 
+## Buy Now Pay Later Providers
+
+Some payment providers offer the customer the option to purchase products in installments. We call these providers buy now pay later providers.
+
+This option depends on various factors, such as country, currency and the total price of the product variant and all providers have different qualifying criteria.
+
+To see what buy now pay later providers are avaiable for a product variant, and what installment breakdown they offer, you can use 'buyNowPayLaterProviders' field on the product variant.
+
 ## Example
+
 ```graphql
 query ProductPage {
   product(sku: 10530421, strict: false) {
@@ -209,6 +226,20 @@ query ProductPage {
         key
         colour
         title
+      }
+      buyNowPayLaterProviders(
+        settings: { currency: GBP, shippingDestination: GB }
+      ) {
+        providerName
+        displayName
+        numberOfInstalments
+        instalmentAmount {
+          currency
+          amount
+          displayValue
+          scalarValue
+        }
+        landingPageLink
       }
     }
     platform
