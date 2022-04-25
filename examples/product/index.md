@@ -55,7 +55,7 @@ When multiple promotions apply to a single product, the offer that provides the 
 This is seen in the `marketedSpecialOffer` object below.
 
 ## Subscriptions
-The legacy flags `isSubscription` and `isAutoRenewSubscription` can be used to determine whether a product is a subscription product and if it is recurring or fixed term subscription. This functionality is being replaced by Subs by Sku.
+The legacy flags `isSubscription` and `isAutoRenewSubscription` can be used to determine whether a product is a subscription product and if it is recurring or fixed term subscription. This functionality is being replaced by Subscription Contracts, where subscription options are associated with product variant rather than having a different variant for each option.
 
 ## Buy Now Pay Later Providers
 
