@@ -92,6 +92,25 @@ query Search {
 }
 ```
 
+## Normal Search Using Barcode
+You are also able to search for listed products by their barcode, simply state "barcode" as an option and pass your required barcode value as a String to the option field.
+
+```graphql
+query Search {
+    search(options: {
+        currency: GBP
+        shippingDestination: GB
+        facets: []
+        barcode: "<your required barcode value>"
+    }, query: ""
+    ) {
+        products {
+            title
+        }
+    }
+}
+```
+
 ## Instant
 
 ```graphql
