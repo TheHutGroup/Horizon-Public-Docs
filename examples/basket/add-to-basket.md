@@ -16,10 +16,12 @@ Altering the quantity of the basket is a separate mutation that allows you to se
 
 ```graphql
 mutation AddToBasket {
-  addProductToBasket(
+  addProductsToBasket(
     basketId: null
-    sku: 10797927
-    quantity: 8
+    items: [
+          { sku: 12815375, quantity: 2 }
+          { sku: 12823433, quantity: 3 }
+    ]
     settings: { currency: GBP, shippingDestination: GB }
   ) {
     id
@@ -87,6 +89,48 @@ mutation AddToBasket {
         }
         maxSelectedProducts
       }
+    }
+  }
+}
+```
+
+
+Note: Adding products to basket was previously done with the below mutation but has now been deprecated. The deprecated mutation will be removed from the schema 6 months after the release of the addProductsToBasket mutation. (Release date: 13/05/2022)
+
+```graphql
+mutation AddToBasket {
+  addProductToBasket(
+    basketId: null
+    sku: 10797927
+    quantity: 8
+    settings: { currency: GBP, shippingDestination: GB }
+  ) {
+    id
+    items {
+      product {
+        title
+      }
+      chargePricePerUnit {
+        currency
+        amount
+        displayValue
+      }
+      quantity
+      appliedOffers {
+        totalBasketDiscount {
+          currency
+          amount
+          displayValue
+        }
+        removeable
+        message
+        info
+      }
+      freeGift
+    }
+    messages {
+      type
+      message
     }
   }
 }

@@ -16,3 +16,8 @@ The field "lastName" has been renamed as "surname" to make it compatible with th
 
 The supersize variants query has changed. The previous query has been deprecated and will be removed from the schema in 6 months.
 . [See here](examples/features/supersize.md)
+
+## Change in add to basket mutation (Released on 13/05/2022)
+
+There is a new mutation to add products to basket which allows adding multiple products to basket within one operation. The previous mutation has been deprecated and will be removed from the schema in 6 months.
+. [See here](examples/basket/add-to-basket.md)
