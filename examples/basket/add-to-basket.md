@@ -14,6 +14,8 @@ Note: The basket ID will update with each manipulation to the basket as it conta
 
 Altering the quantity of the basket is a separate mutation that allows you to set the quantity of an item if you know its already there.
 
+Messages specific to the mutation being called are now included in the `responseMessages` field. Until clients are migrated to using this field we will continue to include these in the `basket.messages` list.
+
 ```graphql
 mutation AddToBasket {
   addProductToBasket(
@@ -22,17 +24,30 @@ mutation AddToBasket {
     quantity: 8
     settings: { currency: GBP, shippingDestination: GB }
   ) {
-    id
-    items {
-      product {
-        title
+    basket (
+      id
+      items {
+        product {
+          title
+        }
+        chargePricePerUnit {
+          currency
+          amount
+          displayValue
+        }
+        quantity
+        appliedOffers {
+          totalBasketDiscount {
+            currency
+            amount
+            displayValue
+          }
+          removeable
+          message
+          info
+        }
+        freeGift
       }
-      chargePricePerUnit {
-        currency
-        amount
-        displayValue
-      }
-      quantity
       appliedOffers {
         totalBasketDiscount {
           currency
@@ -43,50 +58,43 @@ mutation AddToBasket {
         message
         info
       }
-      freeGift
-    }
-    appliedOffers {
-      totalBasketDiscount {
-        currency
-        amount
-        displayValue
+      messages {
+        type
+        message
       }
-      removeable
-      message
-      info
-    }
-    messages {
-      type
-      message
-    }
-    selectYourSample {
-      id
-      title
-      message
-      currentAmountSpent {
-        currency
-        amount
-        displayValue
-      }
-      tiers {
+      selectYourSample {
         id
-        thresholdAmountSpent {
+        title
+        message
+        currentAmountSpent {
           currency
           amount
           displayValue
         }
-        products {
-          sku
-          title
-          images {
-            thumbnail
+        tiers {
+          id
+          thresholdAmountSpent {
+            currency
+            amount
+            displayValue
           }
+          products {
+            sku
+            title
+            images {
+              thumbnail
+            }
+          }
+          selectedProducts {
+            sku
+          }
+          maxSelectedProducts
         }
-        selectedProducts {
-          sku
-        }
-        maxSelectedProducts
       }
+    )
+    responseMessages {
+      type
+      message
     }
   }
 }
