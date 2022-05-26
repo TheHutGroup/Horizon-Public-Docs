@@ -21,3 +21,23 @@ The supersize variants query has changed. The previous query has been deprecated
 
 There is a new mutation to add products to basket which allows adding multiple products to basket within one operation. The previous mutation has been deprecated and will be removed from the schema in 6 months.
 . [See here](examples/basket/add-to-basket.md)
+
+## Change in addProductToBasket Basket mutation (Released on 25/05/2022)
+
+The way Horizon calculates a product quantity inside a Basket has been changed. This means that Horizon now takes into 
+account the quantity of a pre-existing product inside a Basket when clients attempt to add additional products using the 
+addProductToBasket mutation. Now, given a basket containing a pre-existing product of quantity 1, calling the following 
+mutation:
+
+```graphql
+mutation AddToBasket {
+    addProductToBasket(
+        basketId: <BASKET ID>
+        sku: <SKU OF PRE-EXISTING PRODUCT>
+        quantity: 1
+        settings: { currency: GBP, shippingDestination: GB }
+    ) {...}
+}
+```
+
+Will result in the basket now containing 1 product of quantity 2.
