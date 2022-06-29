@@ -16,6 +16,8 @@ Altering the quantity of the basket is a separate mutation that allows you to se
 containing a pre-existing product will result in the quantity of the pre-existing product to also be updated, where the new quantity of the pre-existing product will be the sum of the 
 old quantity of the product, plus the quantity of the product you wish to add.
 
+Basket messages that are in response to the mutation being called are now returned in the "responseMessages" field. Until clients are migrated to using this field we will continue to include these in the "messages" list.
+
 ```graphql
 mutation AddToBasket {
   addProductsToBasket(
@@ -60,6 +62,10 @@ mutation AddToBasket {
       info
     }
     messages {
+      type
+      message
+    }
+    responseMessages {
       type
       message
     }

@@ -42,6 +42,6 @@ mutation AddToBasket {
 
 Will result in the basket now containing 1 product of quantity 2.
 
-## Change in all basket mutations (Released on 08/06/2022)
+## Change in all basket mutations (Released 06/2022)
 
-The fields returned by all basket mutations are being moved inside a "basket" object and can be accessed by "basket.{fieldName}". The original fields will still be available for a period of time to allow clients to migrate over.
+Basket messages that are specific to the mutation being called are being moved to a field called "responseMessages". These messages will still be available for a period of time in the "messages" list to allow clients to migrate over.
