@@ -16,8 +16,6 @@ Altering the quantity of the basket is a separate mutation that allows you to se
 containing a pre-existing product will result in the quantity of the pre-existing product to also be updated, where the new quantity of the pre-existing product will be the sum of the 
 old quantity of the product, plus the quantity of the product you wish to add.
 
-Messages specific to the mutation being called are now included in the `responseMessages` field. Until clients are migrated to using this field we will continue to include these in the `basket.messages` list.
-
 ```graphql
 mutation AddToBasket {
   addProductsToBasket(
@@ -28,30 +26,17 @@ mutation AddToBasket {
     ]
     settings: { currency: GBP, shippingDestination: GB }
   ) {
-    basket (
-      id
-      items {
-        product {
-          title
-        }
-        chargePricePerUnit {
-          currency
-          amount
-          displayValue
-        }
-        quantity
-        appliedOffers {
-          totalBasketDiscount {
-            currency
-            amount
-            displayValue
-          }
-          removeable
-          message
-          info
-        }
-        freeGift
+    id
+    items {
+      product {
+        title
       }
+      chargePricePerUnit {
+        currency
+        amount
+        displayValue
+      }
+      quantity
       appliedOffers {
         totalBasketDiscount {
           currency
@@ -62,43 +47,50 @@ mutation AddToBasket {
         message
         info
       }
-      messages {
-        type
-        message
+      freeGift
+    }
+    appliedOffers {
+      totalBasketDiscount {
+        currency
+        amount
+        displayValue
       }
-      selectYourSample {
+      removeable
+      message
+      info
+    }
+    messages {
+      type
+      message
+    }
+    selectYourSample {
+      id
+      title
+      message
+      currentAmountSpent {
+        currency
+        amount
+        displayValue
+      }
+      tiers {
         id
-        title
-        message
-        currentAmountSpent {
+        thresholdAmountSpent {
           currency
           amount
           displayValue
         }
-        tiers {
-          id
-          thresholdAmountSpent {
-            currency
-            amount
-            displayValue
+        products {
+          sku
+          title
+          images {
+            thumbnail
           }
-          products {
-            sku
-            title
-            images {
-              thumbnail
-            }
-          }
-          selectedProducts {
-            sku
-          }
-          maxSelectedProducts
         }
+        selectedProducts {
+          sku
+        }
+        maxSelectedProducts
       }
-    )
-    responseMessages {
-      type
-      message
     }
   }
 }
