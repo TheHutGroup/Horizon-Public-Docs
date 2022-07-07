@@ -227,6 +227,8 @@ query ProductPage {
         colour
         title
       }
+      isSubscription
+      isAutoRenewSubscription
       buyNowPayLaterProviders(
         settings: { currency: GBP, shippingDestination: GB }
       ) {
@@ -307,8 +309,21 @@ query ProductPage {
         }
       }
     }
-    isSubscription
-    isAutoRenewSubscription
+    cheapestVariant(options: { currency: GBP, shippingDestination: GB }) {
+      price(currency: GBP, shippingDestination: GB) {
+        price {
+          currency
+          amount
+          displayValue
+        }
+        rrp {
+          currency
+          amount
+          displayValue
+        }
+      }
+      earnableLoyaltyPoints(settings: { currency: GBP, shippingDestination: GB })
+    }
     brand {
       name
       page {
