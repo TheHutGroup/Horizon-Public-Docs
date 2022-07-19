@@ -42,6 +42,6 @@ mutation AddToBasket {
 
 Will result in the basket now containing 1 product of quantity 2.
 
-## Change in all basket mutations (Released 06/2022)
+## Change in all basket mutations (Released 07/2022)
 
 Basket messages that are specific to the mutation being called are being moved to a field called "responseMessages". These messages will still be available for a period of time in the "messages" list to allow clients to migrate over.
