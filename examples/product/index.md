@@ -309,7 +309,7 @@ query ProductPage {
         }
       }
     }
-    cheapestVariant(options: { currency: GBP, shippingDestination: GB }) {
+    cheapestVariant(currency: GBP, shippingDestination: GB) {
       price(currency: GBP, shippingDestination: GB) {
         price {
           currency
