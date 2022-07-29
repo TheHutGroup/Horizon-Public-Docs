@@ -41,3 +41,7 @@ mutation AddToBasket {
 ```
 
 Will result in the basket now containing 1 product of quantity 2.
+
+## Change in product to cheapestVariantPrice field (Released on 19/07/2022)
+
+The field cheapestVariantPrice is now deprecated and will be removed from the schema in 6 months. Please use the cheapestVariant field to access the cheapest variant price. 
