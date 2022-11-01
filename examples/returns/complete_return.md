@@ -32,8 +32,7 @@ input CompleteReturnInput @if(feature: ORDER_RETURNS)  {
 }
 ```
 
-- `returnId`: the ZigZag return Id for the return against the `products` in this object. This should
-  be used in the inputs 
+- `returnId`: the ZigZag return Id for the return.
 - `carrierServiceId`: the Id of the carrier service chosen by the customer for this return.
 - `numberOfProducts`: the cumulative quantity of all items to be sent via the chosen carrier service.
 - `dropOffPointId`: if the chosen carrier service uses dropoff points, then we include the Id of 

@@ -78,8 +78,7 @@ type Return @if(feature: ORDER_RETURNS) {
 }
 ```
 
-- `returnId`: the ZigZag return Id for the return against the `products` in this object. This should
-be used in the inputs 
+- `returnId`: the ZigZag return Id for the return against the `products` in this object.
 - `dcWarehouse`: this is the Id of the warehouse that the products of this return will be addressed
 to. In cases of multiple returns, this will be different for every return in the list.
 - `products`: the products that are a part of this return.
