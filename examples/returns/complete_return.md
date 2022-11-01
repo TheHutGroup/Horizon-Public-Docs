@@ -24,6 +24,8 @@ The mutation takes in a list of all the returns to complete:
 
 ```graphql
 input CompleteReturnInput @if(feature: ORDER_RETURNS)  {
+    orderNumber: String!
+    retailerCode: String!
     returnId: String!
     carrierServiceId: Int
     numberOfProducts: Int!
@@ -32,6 +34,8 @@ input CompleteReturnInput @if(feature: ORDER_RETURNS)  {
 }
 ```
 
+- `orderNumber`: the order number.
+- `retailerCode`: the retailer code.
 - `returnId`: the ZigZag return Id for the return.
 - `carrierServiceId`: the Id of the carrier service chosen by the customer for this return.
 - `numberOfProducts`: the cumulative quantity of all items to be sent via the chosen carrier service.
