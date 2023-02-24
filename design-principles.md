@@ -72,21 +72,25 @@ extend type City {
 
 The `offset` parameter must be zero or more (negative values will error) and gives the index of the first record to be included, starting at zero. The `limit` parameter must also be zero or more, though a zero value will not be very useful as no records will be returned, and sets the maximum number of records to be returned. `total` gives the total number of records matching the filter. `hasMore` is true unless the last record returned is the final record available, or there are no records available at all. If `offset` is greater than `total`, no records will be returned but the system will not error.
 
-Filters can be used to narrow down the records returned. All records returned will match the value provided in each non-null filter field, i.e. they are combined with an *and* rather than an *or*. To return records matching different filters, use field aliasing. A null filter parameter, or a non-null filter with all fields null, are equivalent and do not affect the results.
+Filters can be used to narrow down the records returned. All records returned will match the value provided in each non-null filter field, i.e. they are combined with an *and* rather than an *or*. To return records matching different filters, use field aliasing. A null filter parameter and a non-null filter with all fields null are equivalent and do not affect the results.
 
 ## Sub-queries
 
 Sometimes additional data may be needed from a root query in reaction to the presence of a particular GraphQL type (resolved from a union or interface).  In this case, these types may have a field of type Query to allow further data to be queried.
 
-An example of this would be with Widgets.  The client will want to request Query.socialLinks ONLY when the SocialLinksWidget is present.  Unfortunately, they couldn't normally make that decision efficiently, as they would need to wait for the response to be returned and then make a second GraphQL query.  We can solve that by giving the SocialLinksWidget a field of type Query.  Then the client can just query as follows:
+An example of this would be with Widgets.  The client will want to request `Query.socialLinks` ONLY when the `SocialLinksWidget` is present.  Unfortunately, they couldn't normally make that decision efficiently, as they would need to wait for the response to be returned and then make a second GraphQL query.  We can solve that by giving the SocialLinksWidget a field of type Query.  Then the client can just query as follows:
 
 ```
-widgets {
-  ... on SocialLinksWidget {
-    query {
-      socialLinks {
-        name
-        url
+query HeaderSocialWidgets {
+  header {
+    widgets {
+      ... on SocialLinksWidget {
+        query {
+          socialLinks {
+            name
+            url
+          }
+        }
       }
     }
   }

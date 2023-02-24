@@ -25,7 +25,6 @@ query Header{
           url
           openExternally
           noFollow
-          noIndex
         }
         type
         image {
@@ -37,7 +36,6 @@ query Header{
             url
             openExternally
             noFollow
-            noIndex
           }
           type
           image {
@@ -49,7 +47,6 @@ query Header{
               url
               openExternally
               noFollow
-              noIndex
             }
             type
             image {
@@ -74,7 +71,6 @@ query Footer{
           url
           openExternally
           noFollow
-          noIndex
         }
         type
         image {
@@ -86,7 +82,6 @@ query Footer{
             url
             openExternally
             noFollow
-            noIndex
           }
           type
           image {
@@ -98,7 +93,6 @@ query Footer{
               url
               openExternally
               noFollow
-              noIndex
             }
             type
             image {
