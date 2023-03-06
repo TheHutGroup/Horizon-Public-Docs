@@ -48,7 +48,7 @@ The field cheapestVariantPrice is now deprecated and will be removed from the sc
 
 ## Deprecation of the ```paymentType``` and ```paymentCard``` fields on Order
 
-The ```paymentType``` and ```paymentCard``` fields on the Order type has now been deprecated and
+The ```paymentType``` and ```paymentCard``` fields on the Order type have now been deprecated and will be
 removed from the schema in 6 months. As a replacement, we have introduced a new field, ```usedPaymentMethods```. This field is of type
 ```List<UsedPaymentMethod>```. Where ```UsedPaymentMethod``` will be defined as:
 
