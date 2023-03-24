@@ -334,3 +334,24 @@ query ProductPage {
   }
 }
 ```
+# Querying for multiple products and product variants.
+In addition to the above query, you can now obtain information for multiple products / product
+variants in bulk. This is achieved through the following queries:
+
+```graphql
+query Products {
+    products(
+        skus: [SKUs], # A List of comma separated SKUs 
+        skipRedirects: Boolean
+    ) {...}
+}
+```
+
+```graphql
+query ProductVariants {
+    productVariants(
+        skus: [SKU]
+    ) {...}
+}
+
+```
