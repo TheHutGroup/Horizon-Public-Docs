@@ -70,9 +70,27 @@ to the total cost of the product for the respective payment method.
 If a Gift Card was used either partially or to fully purchase the product, then Gift Card information
 will be exposed via the ```giftCard``` field. Where the type ```GiftCard``` will be defined as:
 
-```
+```graphql
 type GiftCard {
 cardUuid: String!
 obfuscatedCardNumber: String!
+}
+```
+
+## Deprecation of the ```customerReturns``` field on Customer
+The field ```customerReturns``` is now deprecated and will be removed from the schema in 6 months from
+17/04/2023. It will be replaced by a paginated field called ```returns```. This field will allow you
+to specify a limit and an offset which will help to speed up page load times when a user has a large
+number of customer returns they wish to view. Use of this field is outlined below.
+
+```graphql
+type Customer {
+    returns(offset: Int! = 0, limit: Int! = 10): CustomerReturns @authenticated @if(feature: ORDER_RETURNS)
+}
+
+type CustomerReturns @if(feature: ORDER_RETURNS) {
+    customerReturns: [CustomerReturn!]!
+    total: Int!
+    hasMore: Boolean!
 }
 ```
