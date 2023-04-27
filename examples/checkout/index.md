@@ -7,17 +7,19 @@ nav_order: 2
 
 # Checkout
 
-Once the user is finished on the basket, the basket can be handed over the checkout to complete. To do this, the customer must be logged in otherwise you will be presented with an error.
+When a customer is finished with their basket, they can proceed to checkout to complete their purchase. To do this, the customer must be logged in, otherwise they will see an error message.
 
-The response of the checkout handover is the checkout token and the URL. To get to checkout, redirect to the checkout URL, which will have a copy of the token in it as the `ct` query parameter. 
+Upon checkout, the response includes a checkout token and URL. To redirect to the checkout page, go to the checkout URL, which will contain a copy of the token as the ct query parameter.
 
 ```graphql
 mutation Checkout {
-  checkout(input: {
-    basketId: "c391611d-177f-4ab6-b604-3d3c415a3086:1610646726489"
-    shippingDestination: GB
-    currency: GBP
-  }) {
+  checkout(
+    input: {
+      basketId: "c391611d-177f-4ab6-b604-3d3c415a3086:1610646726489"
+      shippingDestination: GB
+      currency: GBP
+    }
+  ) {
     error
     token
     checkoutUrl
@@ -27,27 +29,28 @@ mutation Checkout {
 
 ## Guest Checkout
 
-Some sites on our platform also have the option of Guest Checkout. This is where customers can checkout without being logged in/creating an account. 
-An email address is required to be able to place an order on our platform and can either be done upfront, before going to checkout, or from within checkout.
+Some sites on our platform allow for guest checkout, which enables customers to purchase items without creating an account or logging in. However, an email address is required to place an order and can either be provided before checkout or during the checkout process.
 
 ```graphql
 mutation GuestCheckout {
-  guestCheckout(input: {
-    checkoutStartInput: {
-      basketId: "c391611d-177f-4ab6-b604-3d3c415a3086:1610646726489"
-      shippingDestination: GB
-      currency: GBP
-    }
-    guestCheckoutEmailInput: {
-      email: ""
-      marketingConsent: I_DO_NOT_CONSENT_TO_RECEIVING_MARKETING_MATERIAL
-      marketingConsentAuditData: {
-        messageShown: "Sign up for emails to receive marketing about offers and promotions"
-        formIdentifier: "GuestCheckout"
-        formLocation: "GuestCheckout From Login Page"
+  guestCheckout(
+    input: {
+      checkoutStartInput: {
+        basketId: "c391611d-177f-4ab6-b604-3d3c415a3086:1610646726489"
+        shippingDestination: GB
+        currency: GBP
+      }
+      guestCheckoutEmailInput: {
+        email: ""
+        marketingConsent: I_DO_NOT_CONSENT_TO_RECEIVING_MARKETING_MATERIAL
+        marketingConsentAuditData: {
+          messageShown: "Sign up for emails to receive marketing about offers and promotions"
+          formIdentifier: "GuestCheckout"
+          formLocation: "GuestCheckout From Login Page"
+        }
       }
     }
-  }) {
+  ) {
     error
     token
     checkoutUrl
@@ -57,13 +60,15 @@ mutation GuestCheckout {
 
 ```graphql
 mutation GuestCheckoutWithoutEmail {
-  guestCheckoutWithoutEmail(input: {
-    checkoutStartInput: {
-      basketId: "c391611d-177f-4ab6-b604-3d3c415a3086:1610646726489"
-      shippingDestination: GB
-      currency: GBP
+  guestCheckoutWithoutEmail(
+    input: {
+      checkoutStartInput: {
+        basketId: "c391611d-177f-4ab6-b604-3d3c415a3086:1610646726489"
+        shippingDestination: GB
+        currency: GBP
+      }
     }
-  }) {
+  ) {
     error
     token
     checkoutUrl
@@ -71,6 +76,7 @@ mutation GuestCheckoutWithoutEmail {
 }
 ```
 
-## Handover errors
+## Handover Checkout Errors
 
-The [CheckoutStartError](https://api.thehut.net/lfint/en/docs#CheckoutStartError) enum details situations that will prevent the checkout handover succeeding. Most of these (those starting with "invalid" or "no such") are a response to incorrect user input, or edge cases with the basket contents. The one most commonly seen is `BASKETS_MERGED` which can occur if checking-out immedidately after a login. See [here](../basket/index.md#basket-merge) for instructions for clearing that flag.
+If a customer encounters an error during checkout, the [CheckoutStartError](https://api.thehut.net/lfint/en/docs#CheckoutStartError) enum lists possible situations that could prevent the checkout handover from succeeding. Most of these errors (those starting with "invalid" or "no such") are a result of incorrect user input or edge cases with the basket contents.
+For example, the `BASKETS_MERGED` error may occur if a customer attempts to check out immediately after logging in. To clear this flag, follow the instructions [here](../basket/index.md#basket-merge).

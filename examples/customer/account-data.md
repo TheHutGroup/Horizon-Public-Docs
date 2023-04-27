@@ -8,13 +8,14 @@ nav_order: 2
 
 # Account Section
 
-To power the account section of a site, we have included some example queries below on how do get certain data for these areas as we as the mutations for common actions.
+This section provides example queries and mutations to support the account section of a site. We have included some example queries below on how to get certain data for these areas as well as the mutations for common actions.
 
 ## Viewing Order History
 
-It is possible to either get all orders, or to filter the orders query to be a specific order number, or just orders of a specific status.
+It is possible to either get all orders or filter the orders query to a specific order number or just orders of a specific status.
 
-An order can be in 1 of 5 states:
+An order can be in one of 7 states:
+
 - ORDER_PLACED
 - PROCESSING
 - DISPATCHED
@@ -23,16 +24,19 @@ An order can be in 1 of 5 states:
 - READY_TO_COLLECT
 - COLLECTED
 
-The `OUTSTANDING` filter will return the following as the order is not in a terminal state:
+The `OUTSTANDING` filter returns orders that are not in a terminal state, including:
+
 - ORDER_PLACED
 - PROCESSING
 - PAYMENT_PROBLEM
 - READY_TO_COLLECT
 
-The `DISPATCHED` filter will return the following. This is a terminal state where the order was successful:
+The `DISPATCHED` filter returns orders that are in a terminal state, specifically:
+
 - DISPATCHED
 
-The `COMPLETED` filter will return the following. This is shows all orders in a terminal state:
+The `COMPLETED` filter shows all orders in a terminal state, including:
+
 - DISPATCHED
 - CANCELLED
 - COLLECTED
@@ -40,11 +44,9 @@ The `COMPLETED` filter will return the following. This is shows all orders in a 
 The above filters could be used to show "Active", "Successful" and "All" orders.
 
 ```graphql
-query OrderHistory{
+query OrderHistory {
   customer {
-    active: orders(limit: 6, filter: {
-      status: OUTSTANDING
-    }) {
+    active: orders(limit: 6, filter: { status: OUTSTANDING }) {
       orders {
         orderNumber
         createdAt
@@ -64,9 +66,7 @@ query OrderHistory{
       hasMore
       total
     }
-    completed: orders(limit: 6, filter: {
-      status: COMPLETED
-    }) {
+    completed: orders(limit: 6, filter: { status: COMPLETED }) {
       orders {
         orderNumber
         createdAt
@@ -91,11 +91,9 @@ query OrderHistory{
 ```
 
 ```graphql
-query OrderDetails{
+query OrderDetails {
   customer {
-    orders(limit: 1, filter: {
-      orderNumber: "152050629"
-    }) {
+    orders(limit: 1, filter: { orderNumber: "152050629" }) {
       orders {
         orderNumber
         createdAt
@@ -167,13 +165,14 @@ query OrderDetails{
 
 ## Adding new Order Statuses
 
-Horizon serves as the entrypoint for external clients and aggregates data from a wide range of underlying systems within THG.
+Horizon serves as the entry point for external clients and aggregates data from a wide range of underlying systems within THG.
 
-In order to aggregate this data and serve it in a logical way to the external clients, Horizon is mapping these statuses into Horizon Order Statuses.
+In order to aggregate this data and serve it in a logical way to external clients, Horizon maps these statuses into Horizon Order Statuses.
 
-The statuses supported by Horizon are declared in the GraphQL schema, within an enum: 
+The statuses supported by Horizon are declared in the GraphQL schema, within an enum:
 
-``` enum OrderStatus {
+```
+  enum OrderStatus {
     ORDER_PLACED
     PROCESSING
     DISPATCHED
@@ -181,14 +180,13 @@ The statuses supported by Horizon are declared in the GraphQL schema, within an 
     CANCELLED
     READY_TO_COLLECT @if(feature: CLICK_AND_COLLECT)
     COLLECTED @if(feature: CLICK_AND_COLLECT)
-} 
+  }
 ```
 
 In order to add a new status in Horizon, it needs to be added within the ENUM declared within the schema and needs to be confirmed with the teams managing the underlying systems that maintain order statuses internally.
 
-``` ```
-
 ## Cancelling Orders
+
 After an order is placed, there is a window of around 30 minutes where it can be cancelled before it is dispatched. When cancelling an order, it is possible to either cancel the whole thing, or just some specific products.
 
 When attempting a partial cancellation, you need to first check the order and information about the `OrderProduct.specialOfferGroup`. This is because we restrict the ability to cancel part of an offer group. We recommend showing products in the order cancellation page, grouped by special offer group.
@@ -220,49 +218,52 @@ mutation CancelOfferGroups {
   cancelOrderSpecialOfferGroups(
     input: {
       orderNumber: "95726695"
-      groups: [
-        { group: 0, reason: NO_LONGER_REQUIRED }
-      ]
+      groups: [{ group: 0, reason: NO_LONGER_REQUIRED }]
     }
   )
 }
 ```
 
 ## Returning Orders
+
 TODO: Documentation coming soon
 
 ## Marketing Preferences
-On our platform, you can opt in for marketing through SMS or Email channels. The current opt in status can be checked using the following query.
+
+On our platform, customers can opt-in for marketing through SMS or Email channels. The current opt-in status can be checked using the following query:
 
 ```graphql
 query MarketingPreferences {
   customer {
-    email:marketingPreferences(type: EMAIL)
+    email: marketingPreferences(type: EMAIL)
     sms: marketingPreferences(type: SMS)
   }
 }
 ```
 
-To sign up to marketing, the following query can be used. As with all mutations related to opt in, audit data is needed for GDPR tracking purposes.
+To sign up for marketing, you can use the following mutation. As with all mutations related to opt-in, audit data is needed for GDPR tracking purposes.
 
 ```graphql
 mutation ChangeMarketingPreferences {
-  updateMarketingPreferences(input: {
-    type: EMAIL
-    newValue: true
-    auditData: {
-      messageShown: "Do you want to sign up for deals?"
-      formIdentifier: "Account section change details"
-      formLocation: "/accountSettings.account"
+  updateMarketingPreferences(
+    input: {
+      type: EMAIL
+      newValue: true
+      auditData: {
+        messageShown: "Do you want to sign up for deals?"
+        formIdentifier: "Account section change details"
+        formLocation: "/accountSettings.account"
+      }
     }
-  }) {
+  ) {
     error
   }
 }
 ```
 
 ## Account Details
-To view the account details of a customer, this can simply be done by querying the fields on a customer.
+
+To view a customer's account details, you can simply query the fields on a customer.
 
 ```graphql
 query AccountDetails {
@@ -273,7 +274,7 @@ query AccountDetails {
 }
 ```
 
-To edit information about a customer, this works similarly to the account creation form where this is dynamic. To get the fields to show, you can run the following query.
+To edit a customer's account information, the `accountSettingsForm` query can be used to retrieve the form fields for updating the account settings. The result can then be used to construct the `updateAccountSettings` mutation.
 
 ```graphql
 query AccountSettingForm {
@@ -298,13 +299,9 @@ query AccountSettingForm {
 }
 ```
 
-The result of this can then be used to construct the `updateAccountSettings` mutation.
 ```graphql
 mutation UpdateAccountSettings {
-  updateAccountSettings(input: [{
-    fieldName: "fullName"
-    value: "New Name"
-  }]) {
+  updateAccountSettings(input: [{ fieldName: "fullName", value: "New Name" }]) {
     error
     fieldErrors {
       fieldName
@@ -316,13 +313,16 @@ mutation UpdateAccountSettings {
 }
 ```
 
-To update the email address of a customers account, this uses a separate mutation as the customer will be required to provide their password for this. This can be seen below.
+To update a customer's email address, the updateEmailAddress mutation can be used. The customer must provide their current password and the new email address.
+
 ```graphql
 mutation UpdateEmail {
-  updateEmailAddress(changes: {
-    currentPassword: "pa55word"
-    newEmailAddress: "newemail@thehutgroup.com"
-  }) {
+  updateEmailAddress(
+    changes: {
+      currentPassword: "pa55word"
+      newEmailAddress: "newemail@thehutgroup.com"
+    }
+  ) {
     error
     fieldErrors {
       fieldName
@@ -333,16 +333,12 @@ mutation UpdateEmail {
 ```
 
 ## Addresses
-It is possible to query all of a customer's saved addresses. Note: This will not return addresses that were used for a previous order but have seen been deleted. Only addresses currently in their address book.
 
-When adding an address, the following fields are mandatory:
-- AddresseeName
-- AddressLine1
-- PostalCode
-- Country
+To query all of a customer's saved addresses, the addresses field can be queried on a customer object.
+Note: This will not return addresses that were used for a previous order but have since been deleted. Only addresses currently in their address book will be returned.
 
 ```graphql
-query Addresses{
+query Addresses {
   customer {
     addresses {
       addresses {
@@ -366,29 +362,42 @@ query Addresses{
 }
 ```
 
+When adding an address, the following fields are mandatory:
+
+- AddresseeName
+- AddressLine1
+- PostalCode
+- Country
+
 ```graphql
 mutation AddAddress {
-  addAddress(input: {
-    addresseeName: "Name"
-    addressLine1: "House Number"
-    addressLine2: "Road"
-    addressLine3: "Village"
-    addressLine4: "Town"
-    addressLine5: "County"
-    postalCode: "Postcode"
-    country: GB
-  })
+  addAddress(
+    input: {
+      addresseeName: "Name"
+      addressLine1: "House Number"
+      addressLine2: "Road"
+      addressLine3: "Village"
+      addressLine4: "Town"
+      addressLine5: "County"
+      postalCode: "Postcode"
+      country: GB
+    }
+  )
 }
 ```
 
+To delete an address, the deleteAddress mutation can be used, specifying the address ID.
+
 ```graphql
 mutation DeleteAddress {
-  deleteAddress(id: "11205BD1-0977-4EBA-B6C8-A296FF3DF35E") 
+  deleteAddress(id: "11205BD1-0977-4EBA-B6C8-A296FF3DF35E")
 }
 ```
 
 ## Payment Cards
-It is possible to view some data of your saved cards ti display in the account section. Note: This is a subset of the data stored for a customer's card and is a copy that is stored separately to the more sensitive data.
+
+To view some data of a customer's saved payment cards, the paymentCards field can be queried on a customer object.
+Note: This is a subset of the data stored for a customer's card and is a copy that is stored separately to the more sensitive data.
 
 ```graphql
 query SavedCards {
@@ -405,7 +414,6 @@ query SavedCards {
           validToYear
           issueNumber
           type
-          
         }
       }
       total
@@ -415,16 +423,19 @@ query SavedCards {
 }
 ```
 
+To delete a saved payment card, the `deletePaymentCard` mutation can be used, specifying the card ID.
+
 ```graphql
 mutation DeletedSavedCard {
-  deletePaymentCard(cardId: "5B0D5AD9-0B7B-4E4B-8EF2-7DD1C17BCA6D") 
+  deletePaymentCard(cardId: "5B0D5AD9-0B7B-4E4B-8EF2-7DD1C17BCA6D")
 }
 ```
 
 ## Social Links
-This shows all the links to social media accounts for social login. For here, a customer can also unlink their social account if needed.
 
-Note: A link can be in a pending state when a social login is attempted for an email address that already exists, and the social provider doesn't perform email verification (like WeChat). In this case we put the social link in a pending state and include this as an error in the response (`SOCIAL_LINK_PENDING`). At this point, one of 2 mutations can be used, a normal login, then the `approveSocialLink` mutation. Or a `requestSocialLinkVerificationEmail` and the token in that email submitted to `loginAndApproveSocialLink`.
+This query returns a list of social media accounts linked to the customer's account.
+
+Note: If a social login is attempted for an email address that already exists and the social provider does not perform email verification (e.g. WeChat), the social link may be in a pending state. In this case, the query will return SOCIAL_LINK_PENDING as an error in the response. To resolve this issue, customers can either use a normal login and then the approveSocialLink mutation, or use the requestSocialLinkVerificationEmail mutation and submit the token in the email to loginAndApproveSocialLink.
 
 ```graphql
 query SocialLinks {
@@ -441,41 +452,50 @@ query SocialLinks {
 }
 ```
 
+Customers can also unlink their social account using this mutation:
+
 ```graphql
 mutation DeletedSocialLink {
-  removeSocialLink(input: {
-    socialLinkId: "30C62623-2569-4DCE-B156-277EFDDD1DE8"
-  })
+  removeSocialLink(
+    input: { socialLinkId: "30C62623-2569-4DCE-B156-277EFDDD1DE8" }
+  )
 }
 ```
 
-```graphql
-# If logged in using your username and password, you can use the following
-mutation ApproveSocialLink {
-  approveSocialLink(input: {
-    socialLinkId: "30C62623-2569-4DCE-B156-277EFDDD1DE8"
-  })
-}
+This mutation approves a pending social link. To use this mutation, customers must log in using their username and password.
 
-# When attempting the link, the email that goes to the account owner will contain this token
+```graphql
+mutation ApproveSocialLink {
+  approveSocialLink(
+    input: { socialLinkId: "30C62623-2569-4DCE-B156-277EFDDD1DE8" }
+  )
+}
+```
+
+When attempting to link a social media account, the email that goes to the account owner will contain this token.
+
+```graphql
 mutation LoginAndApproveSocialLink {
-  loginAndApproveSocialLink(input: {
-    verificationToken: "30C62623-2569-4DCE-B156-277EFDDD1DE8"
-  }) {
+  loginAndApproveSocialLink(
+    input: { verificationToken: "30C62623-2569-4DCE-B156-277EFDDD1DE8" }
+  ) {
     error
   }
 }
 ```
 
 ## Account Credit
-Account credit can be earn and spent on site and is redeemed within checkout. Because our sites support multiple currencies, and also multiple locales where a customer is shared across those locales, credit can be earnt in multiple currencies. Note: It can only be spent in a single currency at one time.
+
+Customers can earn and spend account credit on the site, and it is redeemed during checkout. Because our sites support multiple currencies/locales for the same customer, customers can earn credit in multiple currencies, but it can only be spent in a single currency at a time.
 
 ```graphql
 query CreditAccounts {
   customer {
-    creditAccounts(filter: {
-      currency: GBP # A customer can earn credit in multiple currencies
-    }) {
+    creditAccounts(
+      filter: {
+        currency: GBP # A customer can earn credit in multiple currencies
+      }
+    ) {
       currency
       balance {
         currency
