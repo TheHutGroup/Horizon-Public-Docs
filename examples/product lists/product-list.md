@@ -8,7 +8,7 @@ nav_order: 1
 
 # Product List
 
-Product lists are very similar to search in the sense they display lists of products and can be filtered with facets but are normally pre-built pages. The only difference to a landing page is that they have the ProductListWidget which takes similar parameters to the search query.
+Product lists are very similar to search in the sense that they display lists of products and can be filtered with facets. However, they differ in that they are normally pre-built pages. The only difference to a landing page is that they have the `ProductListWidget` which takes similar parameters to the search query.
 
 ```graphql
 query ProductList {

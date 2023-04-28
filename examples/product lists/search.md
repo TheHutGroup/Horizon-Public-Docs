@@ -7,8 +7,8 @@ nav_order: 2
 ---
 
 # Search
-Our search system has 2 variants, Normal and Instant.
-Instant is to be used when the user types into the search bar at the top of the page before they press enter. This search is slightly different to normal as the searched performed is more fuzzy in terms of the data returned and also provides spelling corrections and suggested full search queries.
+Our search system has 2 variants: Normal and Instant.
+Instant should be used when the user types into the search bar at the top of the page before they press enter. This search is slightly different to normal as the search performed is more fuzzy in terms of the data returned and also provides spelling corrections and suggested full search queries.
 
 ## Facets
 Facets are used to filter down lists of products. The possible values are returned as part of a search/product list query and are then supplied back to filter the list down.
@@ -93,7 +93,7 @@ query Search {
 ```
 
 ## Normal Search Using Barcode
-You are also able to search for listed products by their barcode, simply state "barcode" as an option and pass your required barcode value as a String to the option field.
+You are also able to search for listed products by their barcode, simply state `barcode` as an option and pass your required barcode value as a String to the option field.
 
 ```graphql
 query Search {

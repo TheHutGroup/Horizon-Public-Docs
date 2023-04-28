@@ -7,31 +7,37 @@ nav_order: 4
 ---
 
 # Landing Page
-Dynamic pages on site fall into 3 categories. Product pages, Search pages and Listing Pages. Listing pages come in 2 varieties, Landing pages and Product List pages. Both are just pages that display a list of widgets.
+Dynamic pages on site fall into 3 categories: Product pages, Search pages and Listing Pages. Listing pages come in 2 varieties: Landing pages and Product List pages. Both are just pages that display a list of widgets.
 
-Listing pages are built using widgets which take data and display them based on how the Frontend widget is defined. This could be a simple image where the widget is just the image URL and a link or could be more complex like a carousel where there is a carosel widget which has an array of widgets as one of its values, each with images and links.
+Listing pages are built using widgets which take data and display them based on how the Frontend widget is defined. This could be a simple image, where the widget is just the image URL and a link, or a more complex widget like a carousel.
 
-For carosels where widgets may have child widgets, so that the query doesnt need to become recursive, we flatten the child widgets which can then be matched based on the IDs.
+A carousel widget has an array of widgets as one of its values, each with images and links. We flatten these child widgets so the queries don't become recursive. They can then be matched based on the widget IDs.
 
 ```graphql
-widgets {
-  ... on MyParentWidgetType {
-    banners: {
-      id
+query PageWidgets {
+  page(path: "/") {
+    widgets {
+      ... on MyParentWidgetType {
+        banners {
+          id
+        }
+      }
     }
-  }
-}
-flattenedChildWidgets {
-  id
-  ... on MyChildWidgetType {
-    greeting
+    flattenedChildWidgets {
+      id
+      ... on MyChildWidgetType {
+        title
+      }
+    }
   }
 }
 ```
 
+Here `MyParentWidgetType` and `MyChildWidgetType` would be replaced with specific widget types for your site. For example `GlobalTabbedWidgetSet` and `GlobalWaitListSignUpWidget`.
+
 New widgets are named and defined in the THG Tooling then become available to use in both the API and for assigning to pages.
 
-Landing pages are usually a list of different widgets like the homepage of a website, Product list pages are usually 1 ProductListWidget on the page.
+Landing pages are usually a list of different widgets like the homepage of a website. Product list pages are usually a page with a single ProductListWidget.
 
 Widgets can be defined on a per site basis depending on what the client supports. For THG built websites, we will support our global list of widgets on all of them.
 

@@ -39,7 +39,7 @@ Currently, images are returned in 3 possible sizes. In future, this will be chan
 
 ## PAPs - Promotion Aware Products
 
-As well as a promotion being aware of the products it applies to, on our platform, the inverse is also true. This means that for a product, if a promotion (or many) apply to it, the product is aware of this and promotion related information can be surfaced alongside the product.
+As well as a promotion being aware of the products it applies to, on our platform the inverse is also true. This means that for a product, if a promotion (or multiple) apply to it, the product is aware of this and promotion related information can be surfaced alongside the product.
 
 This includes information like:
 
@@ -50,12 +50,12 @@ This includes information like:
 
 These are all customised and set up through our Content Management System that allow this information to be displayed beside a product.
 
-When multiple promotions apply to a single product, the offer that provides the best value to the customer is the one that has the information displayed.
+When multiple promotions apply to a single product, the offer that provides the best value to the customer is the one that has its information displayed.
 
 This is seen in the `marketedSpecialOffer` object below.
 
 ## Subscriptions
-The legacy flags `isSubscription` and `isAutoRenewSubscription` can be used to determine whether a product is a subscription product and if it is recurring or fixed term subscription. This functionality is being replaced by Subscription Contracts, where subscription options are associated with product variant rather than having a different variant for each option.
+The legacy flags `isSubscription` and `isAutoRenewSubscription` can be used to determine whether a product is a subscription product and if it is recurring or fixed term subscription. This functionality is being replaced by Subscription Contracts, where subscription options are associated with product variants rather than having a different variant for each option.
 
 ## Buy Now Pay Later Providers
 
@@ -63,7 +63,7 @@ Some payment providers offer the customer the option to purchase products in ins
 
 This option depends on various factors, such as country, currency and the total price of the product variant and all providers have different qualifying criteria.
 
-To see what buy now pay later providers are avaiable for a product variant, and what installment breakdown they offer, you can use 'buyNowPayLaterProviders' field on the product variant.
+To see what buy now pay later providers are avaiable for a product variant, and what installment breakdown they offer, you can use `buyNowPayLaterProviders` field on the product variant.
 
 ## Example
 
