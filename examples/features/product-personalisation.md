@@ -9,7 +9,7 @@ nav_order: 2
 # Product Personalisation
 
 Some products on our platform can be personalised with custom information before being dispatched. This could be anything from custom engraving/packaging to just a note in the package that is bespoke to that order.
-We currently support 2 different types of personalisation field types, they are FREE_TEXT and SINGLE_SELECTION.
+We currently support 2 different types of personalisation field types and these are FREE_TEXT and SINGLE_SELECTION.
 
 If a product is personalisable, this can be checked on the `ProductVariant` object like so:
 
