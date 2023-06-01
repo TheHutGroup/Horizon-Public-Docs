@@ -23,7 +23,7 @@ The Web API uses the HTTP `Host` header (i.e. the domain part of the URL) to det
 Request metadata (such as authentication tokens and session IDs) are to be provided as cookies. This decision was taken for two reasons:
 
 * Backwards compatibility: The cookie will be shared with our old e-commerce platform.
-* Security: When logging in and being granted an authentication token, this needs to be stored securely with the customer in their browser. The most secure way of doing this, when working with a JS frontend is as a HttpOnly cookie. If it is not stored in this way, any malicious JS code could potentially steal it. As it is, such cookies are invisible to the frontend application.
+* Security: When logging in and being granted an authentication token, this needs to be stored securely with the customer in their browser. The most secure way of doing this, when working with a JS frontend is as a HttpOnly cookie. If it is not stored in this way, any malicious JavaScript code could potentially steal it. As it is, such cookies are invisible to the frontend application.
 
 The cookies currently supported are:
 
@@ -31,7 +31,7 @@ The cookies currently supported are:
 * `chumewe_user` Cookie placed on the device which lasts 5 years for tracking and personalisation
 * `chumewe_sess` Cookie placed on the device which lasts 4 hours for session tracking and A/B testing
 
-Note: The Opaque token described above, which is used for customer authentication, will not be returned as a field on the `AuthenticationResponse` object for the web API. This is to help support client-side rendered application being unable to securely store this as a cookie, preventing other JS from potentially stealing it. We will return this as a secure cookie on successful actions as well as reading this cookie when required for authenticated actions.
+Note: The Opaque token described above, which is used for customer authentication, will not be returned as a field on the `AuthenticationResponse` object for the web API.  This is to prevent malicious JavaScript from stealing it. We will return the token as a secure cookie on successful actions and will read this cookie when required for authenticated actions.
 
 ### App API
 
@@ -52,11 +52,11 @@ Features are a way of enabling or disabling entire parts of the backend for diff
 
 The list of currently active features on a given site can be queried using the `features` field on the `Query` type.  The full list of possible features can be found in the schema documentation.
 
-The features affect the avaiable schema through GraphQL directives, which are applied to different types, fields and arguments in the master schema found in this document.
+The features affect the available schema through GraphQL directives, which are applied to different types, fields and arguments in the master schema found in this document.
 
 ## Graceful degradation (flags)
 
-The extensions of each GraphQL response may come with a list of `flags`.  This will be a list of values as defined in the Flag enum, which can be found in the schema documentation.
+The extensions of each GraphQL response may come with a list of `flags`.  This will be a list of values as defined in the `Flag` enum, which can be found in the schema documentation.
 
 These flags are used by Horizon to signal information about the server's current status, and the status of the user's session.  Currently, the following flags are supported:
 
@@ -90,7 +90,7 @@ Each flag will appear in the response at most once.
 * Some mutations / queries are declared to be rate limited in the schema.
   * These are associated with a rate limiting bucket, which is a set of operations that grouped together for rate-limiting purposes, e.g. `AUTHENTICATION`.
   * For some (not all) rate limited operations, the rate limiter may be bypassed if a valid CAPTCHA response is submitted with the request.
-  * In this case, CAPTCHA is used as an umbrella term to also cover various "security check" mechanisms. See the CaptchaType enum for the canonical list of supported systems.
+  * In this case, CAPTCHA is used as an umbrella term to also cover various "security check" mechanisms. See the `CaptchaType` enum for the canonical list of supported systems.
 
 ### Am I being rate limited?
 
