@@ -372,11 +372,11 @@ As can be seen above, this product has a configuration assigned. The configurati
 and other common properties.
 
 Depending on the field type, they will have additional options. For example the `FREE_TEXT` field type has a `max length`, which is the max amount of characters the user can input. The `SINGLE_SELECTION` type has a list of `options` with names and values. `name` can be 
-displayed to the end user, `value` is submitted to the API, `dislayAsset` has a small carousel image for the specific template and position `order` in the carousel.
+displayed to the end user, `value` is submitted to the API, `dislayAsset` has a small carousel image for the specific template and `order` is the template position in the carousel.
 
 The configuration also has fonts, previews and supportImages. Since the returned configuration is very long not all supportImages and previewImages sizes have been included here, but images are available in all sizes and template designs (`assetSets`).
 
-There are always support images and preview images for all the existing `previewAssetSetIdentifier` so that when the customer clicks on one template design (= one `option`) the images relevant only to that template needs to be shown on the PDP.
+There are always support images and preview images for all the existing `previewAssetSetIdentifier` so that when the customer clicks on one template design (= one `option`) only the images relevant to that template need to appear on the PDP.
 
 To know specifics and meaning of all these properties see Personalisation docs on Confluence. 
 
@@ -479,6 +479,9 @@ This is the kind of config most likely used to set up a pick 'n mix product with
 
 Each `MULTI_SELECTION` field contains a group of products. The customer will be able to choose one or a combination of them. Each `option` is an individual product, and the `value` is containing its SKU. Each MULTI_SELECTION field also has a `fixedQuantity`. 
 The customer will have to select a combination of one or more products, within the group, to reach the total quantity specified here.
+
+For validation purposes all configs have at least one `location`. The location indicates were to put the text on the preview image. In case there is no preview, the location is useless and should not be displayed in the frontend. As a rule of thumb, if the location `fieldName`,
+is not a `FREE_TEXT` field then the location should be ignored.
 
 ## Validating Fields
 Fields can be validated before the final submissions by using the validation query. This will check that the field `name` is valid for the SKU provided, if the `value` is within the correct length and makes sure the value isn't in a preconfigured disallow list.
