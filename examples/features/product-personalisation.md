@@ -67,7 +67,6 @@ query GetProductVariant{
                 }
             }
             personalisationFonts {
-                fontId
                 name
                 family
                 weight
@@ -204,7 +203,6 @@ An example response is below:
         ],
         "personalisationFonts": [
           {
-            "fontId": "914936535851663364",
             "name": "Block",
             "family": "Cormorant Garamond",
             "weight": 700,
