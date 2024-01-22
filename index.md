@@ -183,6 +183,29 @@ This system operates entirely independently of rate limiting.
 
 See the [Schema Design Principles](design-principles.md) for an explanation of these fields.
 
+## Automated Persisted Queries
+
+Horizon supports Automated Persisted Queries in accordance to the [Apollo Server specifications](https://www.apollographql.com/docs/apollo-server/performance/apq/).
+Automated Persisted Queries can help with response times in a couple of ways, including but not limited to:  
+1. Reduced overhead of constructing the query client-side
+2. Reduced network transit time due to not needing to transfer the body of the request.
+
+There are two steps to using persisted queries:
+1. Saving the query on the server. In this step, the client provides, in a GET request, both the query and its SHA256 hash:
+```shell
+curl -k --get https://horizon-url/graphql \                                          
+--header 'content-type: application/json' --data-urlencode 'query=query Product($product: SKU!, $strict: Boolean!) { product(sku: $product, strict: $strict) { title }}' --data-urlencode 'variables={"product" : "12459542", "strict" : "False"}' \
+--data-urlencode 'extensions={"persistedQuery":{"version":1,"sha256Hash":"93b00f3c4b13f2703dae9d89a9e13b4985e3ada2c9d3424b5016c0d3e461b806"}}'
+```
+2. Using the query. In this step, it is no longer necessary to provide the query itself, as the server knows what response to serve based on the hash provided:
+```shell
+curl -k --get https://horizon-url/graphql \                                          
+--header 'content-type: application/json' --data-urlencode 'variables={"product" : "12462512", "strict" : "True"}' \
+--data-urlencode 'extensions={"persistedQuery":{"version":1,"sha256Hash":"93b00f3c4b13f2703dae9d89a9e13b4985e3ada2c9d3424b5016c0d3e461b806"}}'
+```
+As the data is URLEncoded, there are length limitations. Any queries which result in a URL **size > 12 KBs** 
+
+In order to mitigate this, we also allow persisted queries to be set using a POST request. Simply provide the extensions header (with the matching persisted query ID for your POST body) alongside the POST request. Using the persisted query will still be done using a GET request as per step 2 above.
 ## Examples
 
 * [Example queries and mutations for common e-commerce pages and flows](examples/index.md)
