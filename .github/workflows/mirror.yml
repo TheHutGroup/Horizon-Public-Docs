@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - gh-pages
+      - mirrorRepository # Remove this after testing
   workflow_dispatch:  # Manual trigger
 
 jobs:
