@@ -18,5 +18,6 @@ jobs:
         run: |
           git config --global user.name 'sa_github_engagement'
           git config --global user.email 'sa_github_engagement@thehutgroup.com'
+          git clone https://sa_github_engagement:${{ secrets.SA_REPO_ACCESS_TOKEN }}@github.com/TheHutGroup/Horizon-Public-Docs.git
           git remote add destination https://sa_github_engagement:${{ secrets.SA_REPO_ACCESS_TOKEN }}@github.com/TheHutGroup/Horizon-Public-Docs.git
           git push --mirror destination
