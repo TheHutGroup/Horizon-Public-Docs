@@ -206,6 +206,10 @@ curl -k --get https://horizon-url/graphql \
 As the data is URLEncoded, there are length limitations. Any queries which result in a URL **size > 12 KBs** 
 
 In order to mitigate this, we also allow persisted queries to be set using a POST request. Simply provide the extensions header (with the matching persisted query ID for your POST body) alongside the POST request. Using the persisted query will still be done using a GET request as per step 2 above.
+### Variables
+
+Since persisted queries are recognized by the hash of the query, they <u> do not </u> support inline variables. Please provide the variables as a separate JSON parameter, or else the persisted query will not be recognized if the value of a variable changes.
+
 ## Examples
 
 * [Example queries and mutations for common e-commerce pages and flows](examples/index.md)
