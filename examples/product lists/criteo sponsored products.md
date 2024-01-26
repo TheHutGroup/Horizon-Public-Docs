@@ -23,12 +23,12 @@ Sponsored Products are generally queried as part of:
 - Product List Page (PLP) - other widgets - TOP
 - Homepage - Bottom or PromoBanner
 - Product Pages (PDP) 
-- search - In Grid
+- Search - In Grid
 
 Depending on where you query for sponsored ads, different sponsored ads placements will be returned.
 
 ## Sponsored ads on PLP - In Grid (product list)
-When Sponsored ads are queried for as part of a page's product list, the following will apply: 
+When Sponsored ads are queried for via `productList` on a PLP, the following will apply: 
 - the placement here will be `viewCategoryApiDesktop-InGrid`
 - the `key` of the `PlacementFormatElement` object will be `sponsored_products`
 
@@ -102,18 +102,18 @@ query Widget {
 ```
 ---
 **a note on widgets**: _To add `sponsoredAds` field to a widget, a field of the type `SponsoredAdsPlacement` must 
-be added to the widget template in site manager._
+be added to the widget template._
 
 ---
 
 ## Homepage
-When sponsored ads are queried as part of Homepage, the sponsored ads placements will be either or both of the following:
+When sponsored ads are queried for as part of Homepage, the sponsored ads placements will be either or both of the following:
 - placement - `viewHomeApiDesktop-bottom`
-- `key` - `sponsored_products`
+  - `key` - `sponsored_products`
 
 
 - placement - `viewHomeApiDesktop-promoBanner`
-- `key` - `FS`
+  - `key` - `FS`
 
 ```graphql
 query Homepage {
