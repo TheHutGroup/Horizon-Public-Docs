@@ -18,9 +18,11 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
+          token: ${{ secrets.sa_repo_access_token }}
 
       - name: Mirror to Destination Repository
         run: |
+          git config --unset-all http.https://github.com/.extraheader
           git config --global user.name 'sa_github_engagement'
           git config --global user.email 'sa_github_engagement@thehutgroup.com'
           git clone https://sa-github-engagement:${{ secrets.SA_REPO_ACCESS_TOKEN }}@github.com/TheHutGroup/Horizon-Public-Docs.git
