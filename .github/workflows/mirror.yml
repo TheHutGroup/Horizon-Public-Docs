@@ -19,6 +19,7 @@ jobs:
         with:
           fetch-depth: 0
           token: ${{ secrets.sa_repo_access_token }}
+          ref: 'gh-pages'
 
       - name: Mirror to Destination Repository
         run: |
