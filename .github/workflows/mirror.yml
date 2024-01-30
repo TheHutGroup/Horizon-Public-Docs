@@ -1,0 +1,28 @@
+name: Mirror Repository to Public Docs
+
+on:
+  push:
+    branches:
+      - gh-pages
+  workflow_dispatch:  # Manual trigger
+
+jobs:
+  mirror:
+    permissions:
+      contents: write
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source Repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.sa_repo_access_token }}
+          ref: 'gh-pages'
+
+      - name: Mirror to Destination Repository
+        run: |
+          git config --unset-all http.https://github.com/.extraheader
+          git config --global user.name 'sa_github_engagement'
+          git config --global user.email 'sa_github_engagement@thehutgroup.com'
+          git push --mirror https://sa-github-engagement:${{ secrets.SA_REPO_ACCESS_TOKEN }}@github.com/TheHutGroup/Horizon-Public-Docs.git
