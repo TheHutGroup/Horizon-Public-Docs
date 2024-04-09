@@ -203,9 +203,11 @@ curl -k --get https://horizon-url/graphql \
 --header 'content-type: application/json' --data-urlencode 'variables={"product" : "12462512", "strict" : "True"}' \
 --data-urlencode 'extensions={"persistedQuery":{"version":1,"sha256Hash":"93b00f3c4b13f2703dae9d89a9e13b4985e3ada2c9d3424b5016c0d3e461b806"}}'
 ```
-As the data is URLEncoded, there are length limitations. Any queries which result in a URL **size > 12 KBs** 
+As the data is URLEncoded, there are length limitations. Any queries which result in a URL **size > 12 KBs** will fail.
 
 In order to mitigate this, we also allow persisted queries to be set using a POST request. Simply provide the extensions query parameter (with the matching persisted query ID for your POST body) alongside the POST request. Using the persisted query will still be done using a GET request as per step 2 above.
+
+There is no guarantee for how long a persisted query, once registered, will stay in memory. Although we don't expect this to happen often, you must be prepared to gracefully handle any previously registered persisted queries not being found, by retrying the request and re-registering the query.
 ### Variables
 
 Since persisted queries are recognized by the hash of the query, they <u> do not </u> support inline variables. Please provide the variables as a separate JSON parameter, or else the persisted query will not be recognized if the value of a variable changes.
