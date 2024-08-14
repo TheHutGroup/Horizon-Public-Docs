@@ -186,3 +186,35 @@ mutation CustomerInteractionSocialMediaLink {
 ```
 
 The `socialMediaInteractionTypesUsage` object from the `loyaltyAccountDashboard.summary` object can be used to determin which social media interaction awards has the customer interacted with by checking the `usage` boolean.
+
+## Loyalty Points on Product & Basket Pages
+
+Loyalty points can be displayed on the product page and is calculated from the product's list price. The query is part of the `productVariant` object.
+
+```graphql
+query ProductPage { 
+    product(sku: 10530421, strict: false) {
+        defaultVariant(options: { currency: GBP, shippingDestination: GB }) {
+             earnableLoyaltyPoints(settings: { currency: GBP, shippingDestination: GB }) 
+        }
+    }
+}
+```
+
+The basket page can also display the total number of loyalty points currently in the basket.
+
+```graphql
+query ViewBasket { 
+  basket(
+    id: "2298e807-50ee-4120-abfa-3c0f0ef78fca:1611587680727",
+    settings: {
+      currency:GBP
+      shippingDestination: GB
+  	}
+    acknowledgeMerge: true
+  ) {
+         earnableLoyaltyPoints
+ }
+}
+```
+
