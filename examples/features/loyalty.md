@@ -17,7 +17,7 @@ There are 3 types of Loyalty Programmes:
 ## Ways of earning points
 There are two ways for customers to earn points:
  - purchasing products 
- - various interaction on the site: reviews, profile completion, account creation, social media interactions 
+ - various interaction on the site: reviews, profile completion, account creation, and social media interactions (NOT available yet)
 
 
 ## Loyalty Account Dashboard Example
@@ -35,7 +35,7 @@ query LoyaltyAccountDashboard {
                 nonSettledPoints
                 spendablePoints
                 pointsToNextTier
-                socialMediaInteractionTypesUsage {      # This object is populated only if there are social media interactions setup for the loyalty programme
+                socialMediaInteractionTypesUsage {      # NOT Available yet - This object is populated only if there are social media interactions setup for the loyalty programme
                     interactionType     # ENUM InteractionAwardType
                     usage
                 }
@@ -62,7 +62,7 @@ query LoyaltyAccountDashboard {
                     earnedPoints
                 }
             }
-            loyaltyInteractionAwards {
+            loyaltyInteractionAwards {  # NOT Available yet
                 type    # ENUM InteractionAwardType
                 earnablePoints
                 socialMediaLink     # This is only populated for social media interactions
@@ -91,18 +91,20 @@ enum LoyaltyHistoryInteractionType {
     MISC
 }
 
+ # All social media interactions are NOT available yet
 enum InteractionAwardType {
-    REVIEW,
-    ACCOUNT_CREATION,
-    PROFILE_COMPLETION,
-    FACEBOOK,
-    INSTAGRAM,
-    TIKTOK,
-    YOUTUBE,
-    TWITTER,
+    REVIEW
+    ACCOUNT_CREATION
+    PROFILE_COMPLETION
+    FACEBOOK
+    INSTAGRAM
+    TIKTOK
+    YOUTUBE
+    TWITTER
     LINKEDIN
 }
 
+ # All social media interactions are NOT available yet
 enum LoyaltyMiscInteractionType @if(feature: LOYALTY) {
     REVIEW
     ACCOUNT_CREATION
@@ -176,7 +178,7 @@ enum RedemptionRateSubmissionStatus {
 
 ```
 
-## Loyalty Customer Interaction with Social Media Links Mutation
+## Loyalty Customer Interaction with Social Media Links Mutation (NOT Available yet)
 
 If the loyalty programme contains social media interactions, then a set of social media icons should be presented to the customer. Each icon should redirect the customer to the `socialMediaLink` provided in the `loyaltyInteractionAwards` from the `loyaltyAccountDashboard`.
 After the customer clicks on the interaction the following mutation should be called with the corresponding `InteractionAwardType`.
