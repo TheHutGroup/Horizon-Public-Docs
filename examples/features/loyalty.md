@@ -22,7 +22,7 @@ There are two ways for customers to earn points:
 
 ## Loyalty Account Dashboard Example
 The Loyalty account dashboard query is part of the customer query. It contains information about the customer's points, about their points history, and about the loyalty programme.
-All of these queries are available only if the LOYALTY feature flag is enabled.
+All of these queries are available only if the LOYALTY feature flag is enabled. The flag is enabled automatically when a programme is set to enabled in the Loyalty UI.
 
 ```graphql
 query LoyaltyAccountDashboard {
@@ -135,6 +135,8 @@ An AUTO opt in means that the customer is auto opted-in in the loyalty programme
 A SOFT opt in means that customer has to manually opt-in in the loyalty programme otherwise they cannot access their points and rewards. However, all the points transactions are still registered behind the scenes and when they decide to opt in all of their points will be available to them.
 A HARD opt in means that customer has to manually opt-in in the loyalty programme and none of their points are registered.
 
+The mutation is available only if the LOYALTY_OPT_IN feature flag is enabled. 
+The flag is enabled automatically when a programme is enabled and has a SOFT or HARD opt in type.
 
 An example of the mutation to opt in a customer into the Loyalty Programme.
 
@@ -159,8 +161,8 @@ mutation RedeemPoints {
 }
 
 enum RedemptionRateSubmissionStatus {
-"Success, Points were redeemed."
-SUCCESS
+    "Success, Points were redeemed."
+    SUCCESS
 
     "Insufficient balance or invalid request"
     INSUFFICIENT_FUNDS_OR_BAD_REQUEST
@@ -185,7 +187,7 @@ mutation CustomerInteractionSocialMediaLink {
 }
 ```
 
-The `socialMediaInteractionTypesUsage` object from the `loyaltyAccountDashboard.summary` object can be used to determin which social media interaction awards has the customer interacted with by checking the `usage` boolean.
+The `socialMediaInteractionTypesUsage` object from the `loyaltyAccountDashboard.summary` object can be used to determine which social media interaction awards has the customer interacted with by checking the `usage` boolean.
 
 ## Loyalty Points on Product & Basket Pages
 
