@@ -10,8 +10,8 @@ Schema documentation is available for each supported site.
 
 For API endpoints, just replace "graphql" in the URL with "docs". Examples as follows:
 
-* [Lookfantastic UK](https://lfint-en.api.thehut.net/lfint/en/docs)
-* [Myprotein US](https://myprotein-us.api.thehut.net/myprotein/us/docs)
+* [Lookfantastic UK](https://lfint-en.api.thehut.net/docs)
+* [Myprotein US](https://myprotein-us.api.thehut.net/docs)
 
 For web endpoints, add "schema-docs" to the Horizon domain, e.g:
 
